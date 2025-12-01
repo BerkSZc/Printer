@@ -76,14 +76,28 @@ Spring Boot API’lerini kullanma
 
 QR / Barkod / PDF işlerini göndermek için POST endpointlerini kullanabilirsiniz.
 
-Örnek:
+ENDPOİNTLER:
+http://localhost:8080/rest/api/print/find  Tüm 'BOS' durumundaki printerları bulmak için
+http://localhost:8080/rest/api/print/find-all Tüm printerleri bulmak için
+http://localhost:8080/rest/api/job/qr/${id}   bu id assign ladığınız işin id si QR bastırmak için
+http://localhost:8080/rest/api/job/text/${id}  bu id assign ladığınız işin id si PDF bastırmak için
+http://localhost:8080/rest/api/job/barcode/${id}  bu id assign ladığınız işin id si BARCODE bastırmak için
+http://localhost:8080/rest/api/job/find-all tüm mevcut işleri bulmak için
 
-POST http://localhost:8080/printjob
+
+Örnek:
+POST http://localhost:8080/rest/api/print/assign/${id}  id kısmı printer id si istediğiniz sayıyı koyun
+{
+  "name": "Printer1",
+  "status": "BOS"
+}
+
+POST http://localhost:8080/rest/api/job/assign        yeni iş atamak için
 Content-Type: application/json
 
 {
-  "content": "Merhaba Dünya",
-  "type": "QR"
+  "type": "QR",
+  "content": "Merhaba Dünya"
 }
 
 
